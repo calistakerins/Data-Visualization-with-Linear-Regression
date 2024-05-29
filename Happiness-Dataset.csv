@@ -1,135 +1,73 @@
-,WHR-Happiness score Dataset - v4 via Gapminder,,,,,,
-,About this file,"This file has multiple sheets with data for one or more indicators used by Gapminder. In this sheet below you'll first find an overview of the indicators (measures) and the list of underlying sources. The actual data we use, is found in the sheet(s) labeled ""data-..."".
-This file is also a documentation of the data process. To follow how the data was transformed from the original sources, start in the sheet to the far right, which holds the input data. You can then follow the process step by step, by looking at the formulas in the sheets from right to left, until you reach the output in the ""data-..."" sheets.",,,,,
-,Version:,v4,,,,,
-,Updated:,March 25 2023,,,,,
-,Download latest version:,Excel file »,,,,,
-,Latest version online:,http://gapm.io/dhapiscore_whr,,,,,
-,Contributor(s) to this version: ,Hisham N,,,,,
-,Feedback,Please give feedback here,,,,,
-,,,,,,,
-#,Indicator(s),Description,Full name,Unit,ID,type,Usage
-1,Happiness score (WHR),"This is the national average response to the question of life evaluations asking the following “Please imagine a ladder, with steps numbered from 0 at the bottom to 10 at the top. The top of the ladder represents the best possible life for you and the bottom of the ladder represents the worst possible life for you. On which step of the ladder would you say you personally feel you stand at this time?” This measure is also referred to as Cantril life ladder. Gapminder has converted this indicator's scale from 0 to 100 to easly communicate it in terms of percentage. ",Happiness score (WHR),Percent,hapiscore_whr,measure,2
-,,,,,,,
-,Sources,,,,,,
-,Dataset description:,"Happiness data is published in the World Happiness Report of the Sustainable Development Solutions Network using data collected by Gallup World Poll. Gallup is a set of national representative surveys undertaken in more than 160 countries in over 140 languages. The main life evaluation question asked in the poll is: “Please imagine a ladder, with steps numbered from 0 at the bottom to 10 at the top. The top of the ladder represents the best possible life for you and the bottom of the ladder represents the worst possible life for you. On which step of the ladder would you say you personally feel you stand at this time?” (Also known as the “Cantril Ladder”.). Gapminder imported times series data from the period 2005 until 2020 from World Happiness Report, 2021. The 2018-2020 ranking of happiness scores includes 149 countries/territories; only two third of them (95 to be precise) have survey information in 2020. The remaining countries’ ranking are based on surveys in 2018 and 2019. We converted countries-etc' happiness score from a scale of 0-10 to scale 0-100. In addition, we calculated the weighted average happiness score using countries-etc' population as weights for four regions (as defined by Gapminder) and global.",,,,,
-,Link to documentation:,http://gapm.io/dhapiscore_whr,,,,,
-,Short source summary:,"WHR,OWID & GM",,,,,
-,,,,,,,
-#,Source id,Name,Link,,,,
-1,whr2023,World Happiness Report 2023,https://worldhappiness.report/ed/2023/#appendices-and-data,,,,
-2,gmpopv6,Gapminder-population v6,https://docs.google.com/spreadsheets/d/14_suWY8fCPEXV0MH7ZQMZ-KndzMVsSsA5HdR-7WqAC0/edit#gid=501532268,,,,
-,,,,,,,
-,License,,,,,,
-,Attribution:,"We believe in free knowledge and therefor we share free data. Most sheets in this file are provided under the open license, called Creative Commmon Attribution License CC BY 4.0., except those sheets mentioned in the exceptions section below. This means you can freely use, copy, and spread the data in those sheets, as long as you mention the following: 'Free data from Gapminder.org'.
-You should also mention the underlaying data sources listed above and include this link: http://gapm.io/dhapiscore_whr",,,,,
-,License link:,Creative Common License CC BY 4.0,,,,,
-,Exceptions:,"The sheets starting with the word ""data"" are covered by this license. Other sheets are included for documentation purpose, and may include data that is governed by other licenses. Check the underlying sources for the specific licenses in these cases.",,,,,
-,,,,,,,
-,Versions,Link,Changes compared to previous,Date,Contributors,,
-,v1,https://docs.google.com/spreadsheets/d/1xjj60QRp8o7NA0w5TDdYXNej7kaTnubAYHZbhKLnSV0/edit#gid=501532268,First version,2020 December 23,Jean U. & Diane I.,,
-,v2,https://docs.google.com/spreadsheets/d/1zDOE-mIFctafOi_6ya6aF4yZNL0IxLBJNedHesgHEqY/edit#gid=501532268,Second version ,2021 April 16,Jean U,,
-,v3,https://docs.google.com/spreadsheets/d/1Jo6_-6W36Qx2IPa_61JLyQ5zUJAXRIcLcU5zBlUa7pM/edit#gid=501532268,Third version,2022 September 20,Hisham N,,
-,v4,https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268,Fourth version,2023 March 25,Hisham N,,
-,,,,,,,
-,Technical stuff,,,,,,
-,Dataset name:,WHR-Happiness score,,,,,
-,Dataset id:,hapiscore_whr,,,,,
-,Doc url,https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268,,,,,
-,Doc id of work doc spreadsheet,1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0,,,,,
-,Formulas,"The formulas in this workbook may be referring to other spreadsheets online, by their named ranges, and not by sheet names. Search for ""named ranges"" to see how to use those instead of cell ranges.",,,,,
-,For developers,"If you like the data we use into your own products, it's better if you fetch data from our standardized gitHub repo on https://open-numbers.github.io
-These spreadsheets are part of Gapminder's data compilation process and allow end users to track how we combine data.",,,,,
-,Read more:,gapm.io/dataworks,,,,,
-,,CHART PREVIEWS,,,,,
-[c] ,data-for-countries-etc-by-year,https://www.gapminder.org/tools/#$state$time$dim=time;&entities$dim=geo;&marker$axis_x$which=income_per_person_gdppercapita_ppp_inflation_adjusted&scaleType=log&spaceRef:null;&axis_y$data=data_&which=Happiness%20score%20(WHR)&spaceRef:null;&label$which=name&scaleType=ordinal;&size$which=population_total&use=indicator&scaleType=linear&spaceRef:null;&color$data=data_fasttrack&which=world_4region&use=property&scaleType=ordinal&spaceRef=entities;;;&data$reader=ddfbw&dataset=sg-master&service=https:////big-waffle.gapminder.org;&data_$reader=google_csv&path=https:////docs.google.com//spreadsheets//d//1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0//gviz//tq?tqx=out:csv/&sheet=data-for-countries-etc-by-year&hasNameColumn:true&nameColumnIndex:1;&data_wdi$reader=ddfbw&dataset=wdi-master&service=https:////big-waffle.gapminder.org;&data_fasttrack$reader=ddfbw&dataset=fasttrack&service=https:////big-waffle.gapminder.org;&chart-type=bubbles,,,,,
-,,Happiness%20score%20(WHR),,,,,
-,DDF mapping:,schema for indicator table,,,,,
-,concept_id,6,,,,,
-,name_short,2,,,,,
-,name,4,,,,,
-,description,3,,,,,
-,unit,5,,,,,
-,type,7,,,,,
-,usage,8,,,,,
-,,,,,,,
-,Catalog status,Indicator ID,Time unit,Countries etc,Regions,In. Levels,World
-,Happiness score (WHR),hapiscore_whr,year,GOOD,GOOD,"BAD: No concept matches concept_id ""hapiscore_whr"", time_unit ""year"", fasttrackCatalogGeography ""income-levels"" in the fasttrack catalog",GOOD
-,,,,,,,
-#,Validation,,,,,,
-1,output-sheets,GOOD: There is at least one output sheet present (sheets starting with 'data-for-' and not ending with '-in-columns'),,,,,
-2,output-sheet:data-for-world-by-year,GOOD: The 'data-for-world-by-year' output sheet has at least 4 header columns,,,,,
-3,output-sheet:data-for-world-by-year,GOOD: The 'data-for-world-by-year' output sheet does not have filter mode turned on (since it breaks the CSV endpoint),,,,,
-4,output-sheet:data-for-regions-by-year,GOOD: The 'data-for-regions-by-year' output sheet has at least 4 header columns,,,,,
-5,output-sheet:data-for-regions-by-year,GOOD: The 'data-for-regions-by-year' output sheet does not have filter mode turned on (since it breaks the CSV endpoint),,,,,
-6,output-sheet:data-for-countries-etc-by-year,GOOD: The 'data-for-countries-etc-by-year' output sheet has at least 4 header columns,,,,,
-7,output-sheet:data-for-countries-etc-by-year,GOOD: The 'data-for-countries-etc-by-year' output sheet does not have filter mode turned on (since it breaks the CSV endpoint),,,,,
-8,output-sheet:data-for-4ilevels-by-year,GOOD: The 'data-for-4ilevels-by-year' output sheet has at least 4 header columns,,,,,
-9,output-sheet:data-for-4ilevels-by-year,GOOD: The 'data-for-4ilevels-by-year' output sheet does not have filter mode turned on (since it breaks the CSV endpoint),,,,,
-10,version,GOOD: Named range 'version' exists,,,,,
-11,version,GOOD: 'Version:' is filled in,,,,,
-12,version,"GOOD: The version at 'Version:' starts with a v, followed by an integer",,,,,
-13,date,GOOD: Named range 'date' exists,,,,,
-14,date,GOOD: 'Updated:' is filled in,,,,,
-15,gapmio,GOOD: Named range 'gapmio' exists,,,,,
-16,gapmio,GOOD: 'Latest version online:' is filled in,,,,,
-17,contributors,GOOD: Named range 'contributors' exists,,,,,
-18,contributors,GOOD: 'Contributor(s) to this version:' is filled in,,,,,
-19,indicator_table,GOOD: Named range 'indicator_table' exists,,,,,
-20,indicator_table,GOOD: The named range 'indicator_table' covers the whole Indicator(s) table (the rows immediately above and below the table are empty),,,,,
-21,indicator_table:row_1,GOOD: This first column of row '1' in the indicator(s) table is incremental (from 1 and up),,,,,
-22,indicator_table:row_1,GOOD: Indicator 1 has a short indicator name (Column 2),,,,,
-23,indicator_table:row_1:data-for-world-by-year,"GOOD: The indicator name cell of indicator 1 is referenced in the 'data-for-world-by-year' output sheet in column 4 as ""=ABOUT!B11""",,,,,
-24,indicator_table:row_1:data-for-regions-by-year,"GOOD: The indicator name cell of indicator 1 is referenced in the 'data-for-regions-by-year' output sheet in column 4 as ""=ABOUT!B11""",,,,,
-25,indicator_table:row_1:data-for-countries-etc-by-year,"GOOD: The indicator name cell of indicator 1 is referenced in the 'data-for-countries-etc-by-year' output sheet in column 4 as ""=ABOUT!B11""",,,,,
-26,indicator_table:row_1:data-for-4ilevels-by-year,"GOOD: The indicator name cell of indicator 1 is referenced in the 'data-for-4ilevels-by-year' output sheet in column 4 as ""=ABOUT!B11""",,,,,
-27,indicator_table:row_1,GOOD: Indicator 1 has a description (Column 3),,,,,
-28,indicator_table:row_1,GOOD: Indicator 1 has a full name (Column 4),,,,,
-29,indicator_table:row_1,GOOD: Indicator 1 has a unit (Column 5),,,,,
-30,indicator_table:row_1,GOOD: Indicator 1's unit does not start or end with a space,,,,,
-31,indicator_table:row_1,GOOD: Indicator 1 has an ID (Column 6),,,,,
-32,indicator_table:row_1,"GOOD: Indicator 1's ID contains only lowercase latin characters (a-z) or numbers, and no space, dashes or underscores. (Column 6)",,,,,
-33,indicator_table:row_1,GOOD: Indicator 1's ID has less than or equal to 20 characters,,,,,
-34,indicator_table:row_1,GOOD: Indicator 1 has a type set (Column 7),,,,,
-35,indicator_table:row_1,GOOD: Indicator 1 has a usage level set (Column 8),,,,,
-36,dataset_description,GOOD: Named range 'dataset_description' exists,,,,,
-37,dataset_description,GOOD: 'Dataset description:' is filled in,,,,,
-38,source_url,GOOD: Named range 'source_url' exists,,,,,
-39,source_url,GOOD: 'Link to documentation:' is filled in,,,,,
-40,source_short_text,GOOD: Named range 'source_short_text' exists,,,,,
-41,source_short_text,GOOD: 'Short source summary:' is filled in,,,,,
-42,source_short_text,GOOD: 'Short source summary:' has less than or equal to 45 characters,,,,,
-43,source_table,GOOD: Named range 'source_table' exists,,,,,
-44,source_table,GOOD: The named range 'source_table' covers the whole Sources table (the rows immediately above and below the table are empty),,,,,
-45,source_table:row_1,GOOD: This first column of row '1' in the sources table is incremental (from 1 and up),,,,,
-46,source_table:row_1,GOOD: Source 1 has a source id (Column 2),,,,,
-47,source_table:row_1,GOOD: Source 1 has a name (Column 3),,,,,
-48,source_table:row_1,GOOD: Source 1 has a link (Column 4),,,,,
-49,source_table:row_2,GOOD: This first column of row '2' in the sources table is incremental (from 1 and up),,,,,
-50,source_table:row_2,GOOD: Source 2 has a source id (Column 2),,,,,
-51,source_table:row_2,GOOD: Source 2 has a name (Column 3),,,,,
-52,source_table:row_2,GOOD: Source 2 has a link (Column 4),,,,,
-53,version_table,GOOD: Named range 'version_table' exists,,,,,
-54,version_table,GOOD: The named range 'version_table' covers the whole Versions table (the rows immediately above and below the table are empty),,,,,
-55,version_table:row_1,GOOD: Version-listing 1 has a version reference set (Column 1),,,,,
-56,version_table:row_1,"GOOD: The version in column 1 starts with a v, followed by an integer",,,,,
-57,version_table:row_1,GOOD: Version-listing 1 has a link (Column 2),,,,,
-58,version_table:row_1,"GOOD: Version-listing 1 has ""Changes compared to previous"" (Column 3)",,,,,
-59,version_table:row_2,GOOD: Version-listing 2 has a version reference set (Column 1),,,,,
-60,version_table:row_2,"GOOD: The version in column 1 starts with a v, followed by an integer",,,,,
-61,version_table:row_2,GOOD: This first column of row '2' in the versions table is incremental,,,,,
-62,version_table:row_2,GOOD: Version-listing 2 has a link (Column 2),,,,,
-63,version_table:row_2,"GOOD: Version-listing 2 has ""Changes compared to previous"" (Column 3)",,,,,
-64,dataset_name,GOOD: Named range 'dataset_name' exists,,,,,
-65,dataset_name,GOOD: 'Dataset name:' is filled in,,,,,
-66,dataset_id,GOOD: Named range 'dataset_id' exists,,,,,
-67,dataset_id,GOOD: 'Dataset id:' is filled in,,,,,
-68,doc_url,GOOD: Named range 'doc_url' exists,,,,,
-69,doc_url,GOOD: 'Doc url' is filled in,,,,,
-70,concept_id_column,GOOD: Named range 'concept_id_column' exists,,,,,
-71,name_short_column,GOOD: Named range 'name_short_column' exists,,,,,
-72,name_column,GOOD: Named range 'name_column' exists,,,,,
-73,description_column,GOOD: Named range 'description_column' exists,,,,,
-74,unit_column,GOOD: Named range 'unit_column' exists,,,,,
-75,type_column,GOOD: Named range 'type_column' exists,,,,,
-76,usage_column,GOOD: Named range 'usage_column' exists,,,,,
+geo,name,time,Happiness score (WHR)
+africa,Africa,2005,5.17
+africa,Africa,2006,4.33
+africa,Africa,2007,4.80
+africa,Africa,2008,4.60
+africa,Africa,2009,4.58
+africa,Africa,2010,4.47
+africa,Africa,2011,4.57
+africa,Africa,2012,4.64
+africa,Africa,2013,4.20
+africa,Africa,2014,4.34
+africa,Africa,2015,4.48
+africa,Africa,2016,4.49
+africa,Africa,2017,4.53
+africa,Africa,2018,4.64
+africa,Africa,2019,4.50
+africa,Africa,2020,4.87
+africa,Africa,2021,4.55
+africa,Africa,2022,4.46
+asia,Asia,2005,5.87
+asia,Asia,2006,4.95
+asia,Asia,2007,5.10
+asia,Asia,2008,5.03
+asia,Asia,2009,4.76
+asia,Asia,2010,5.04
+asia,Asia,2011,5.05
+asia,Asia,2012,5.04
+asia,Asia,2013,4.99
+asia,Asia,2014,5.03
+asia,Asia,2015,4.97
+asia,Asia,2016,4.97
+asia,Asia,2017,4.83
+asia,Asia,2018,4.78
+asia,Asia,2019,4.63
+asia,Asia,2020,5.11
+asia,Asia,2021,4.91
+asia,Asia,2022,5.04
+europe,Europe,2005,6.42
+europe,Europe,2006,5.48
+europe,Europe,2007,5.94
+europe,Europe,2008,6.26
+europe,Europe,2009,5.84
+europe,Europe,2010,5.99
+europe,Europe,2011,5.96
+europe,Europe,2012,6.01
+europe,Europe,2013,5.94
+europe,Europe,2014,6.10
+europe,Europe,2015,6.06
+europe,Europe,2016,6.07
+europe,Europe,2017,6.14
+europe,Europe,2018,6.19
+europe,Europe,2019,6.14
+europe,Europe,2020,6.23
+europe,Europe,2021,6.11
+europe,Europe,2022,6.16
+americas,The Americas,2005,6.73
+americas,The Americas,2006,6.49
+americas,The Americas,2007,6.67
+americas,The Americas,2008,6.67
+americas,The Americas,2009,6.87
+americas,The Americas,2010,6.80
+americas,The Americas,2011,6.81
+americas,The Americas,2012,6.75
+americas,The Americas,2013,6.95
+americas,The Americas,2014,6.77
+americas,The Americas,2015,6.49
+americas,The Americas,2016,6.44
+americas,The Americas,2017,6.47
+americas,The Americas,2018,6.40
+americas,The Americas,2019,6.51
+americas,The Americas,2020,6.29
+americas,The Americas,2021,6.29
+americas,The Americas,2022,6.35

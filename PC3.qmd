@@ -33,6 +33,6 @@ editor: visual
 
 ```{r}
 library(tidyverse)
-life_expectancies <- read.csv("Life-Expectancy-Dataset.csv")
-health_scores <- read.csv("Happiness-Dataset.csv")
+life_expectancies_by_region <- read.csv("Life-Expectancy-Dataset.csv")
+happiness_scores_by_region <- read.csv("Happiness-Dataset.csv")
 ```
