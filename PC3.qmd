@@ -1,8 +1,21 @@
 ---
 title: "PC3"
 author: "Jack Walton, Calista Kerins, Dylan Schmidt, Jhon Chavez-Matul"
-format: html
-editor: visual
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    toc: true
+    number-sections: true
+    theme:
+      light: flatly
+      dark: darkly
+editor: source
+execute: 
+  error: true
+  echo: true
+  message: false
+  warning: false
 ---
 
 # Project Proposal + Data
