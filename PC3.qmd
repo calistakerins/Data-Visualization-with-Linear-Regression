@@ -38,8 +38,10 @@ We hypothesize that countries with a higher average happiness score will also ha
 
 ```{r}
 library(tidyverse)
-life_expectancies_by_region <- read.csv("Life-Expectancy-Dataset.csv")
-happiness_scores_by_region <- read.csv("Happiness-Dataset.csv")
+life_expectancies_by_country <- read.csv("Life Expectancy-Dataset-countries-etc-by-year.csv")
+happiness_scores_by_country <- read.csv("Happiness-Dataset-countries-by-year.csv")
+
+full_dataset <- inner_join(data1, data2, by = c("time", "name"))
 ```
 
 # 
