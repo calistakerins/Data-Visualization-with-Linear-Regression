@@ -1,6 +1,38 @@
 ---
 title: "PC3"
-author: "Jack Walton, ..."
+author: "Jack Walton, Calista Kerins, Dylan Schmidt, Jhon Chavez-Matul"
 format: html
 editor: visual
 ---
+
+**Quantitative Variables**
+
+-   Variable 1: Happiness score (WHR)\*
+
+-   Variable 2: Life Expectancy\*
+
+\*Measured each year\
+
+**Detailed Data Description**
+
+[Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains 
+
+[Life Expectancy Dataset](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit#gid=501532268): 
+
+**Hypothesized Relationship**
+
+	We hypothesize that countries with a higher average happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.\
+
+**Data Cleaning Process**
+
+1.  First, we used pivot_longer to pivot the tables, consolidating all the different year variables into one column named ‘Year’
+
+2.  Then, we removed all rows containing ‘NA’ values.
+
+3.  Next, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year
+
+```{r}
+library(tidyverse)
+life_expectancies <- read.csv("Life-Expectancy-Dataset.csv")
+health_scores <- read.csv("Happiness-Dataset.csv")
+```
