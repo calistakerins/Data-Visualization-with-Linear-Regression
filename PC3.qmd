@@ -5,7 +5,9 @@ format: html
 editor: visual
 ---
 
-**Quantitative Variables**
+# Project Proposal + Data
+
+## **Quantitative Variables**
 
 -   Variable 1: Happiness score (WHR)\*
 
@@ -13,7 +15,7 @@ editor: visual
 
 \*Measured each year\
 
-**Detailed Data Description**
+## **Detailed Data Description**
 
 [Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains average scores about life satisfaction using a scale known as the Cantril life ladder, measured across nations over multiple years. Respondents imagined a ladder with steps ranging from 0 at the bottom (representing the worst possible life) to 10 at the top (representing the best possible life) and indicated where they feel they stand. Gapminder has converted this scale from 0 to 100 for clarity, representing it in terms of percentage. The data comes from the World Happiness Report collected by the Gallup World Poll. It contains data from 2005-2020.
 
@@ -24,7 +26,7 @@ editor: visual
 
 	We hypothesize that countries with a higher average happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.\
 
-**Data Cleaning Process**
+## **Data Cleaning Process**
 
 1.  First, we used pivot_longer to pivot the tables, consolidating all the different year variables into one column named ‘Year’
 
@@ -37,3 +39,13 @@ library(tidyverse)
 life_expectancies_by_region <- read.csv("Life-Expectancy-Dataset.csv")
 happiness_scores_by_region <- read.csv("Happiness-Dataset.csv")
 ```
+
+# Linear Regression
+
+Objectives:
+
+-   Visualize the relationship between your variables.
+
+-   Use linear regression to model the relationship between your variables.
+
+-   Evaluate your model fit by summarizing the amount of variability in the response, fitted, and residual values.
