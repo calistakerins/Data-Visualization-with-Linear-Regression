@@ -15,9 +15,10 @@ editor: visual
 
 **Detailed Data Description**
 
-[Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains 
+[Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains average scores about life satisfaction using a scale known as the Cantril life ladder, measured across nations over multiple years. Respondents imagined a ladder with steps ranging from 0 at the bottom (representing the worst possible life) to 10 at the top (representing the best possible life) and indicated where they feel they stand. Gapminder has converted this scale from 0 to 100 for clarity, representing it in terms of percentage. The data comes from the World Happiness Report collected by the Gallup World Poll. It contains data from 2005-2020.
 
-[Life Expectancy Dataset](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit#gid=501532268): 
+\
+[Life Expectancy Dataset](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit#gid=501532268): This data set contains life expectancy across different nations over time, measured as the number of years a newborn infant would live if the current mortality rates at different ages were to stay the same throughout its life. The data is compiled by Gapminder and mainly comes from the Institute of Health Metrics and Evaluation and UN forecasts. It contains data from 1800 to 2100 (Predicted).
 
 **Hypothesized Relationship**
 
