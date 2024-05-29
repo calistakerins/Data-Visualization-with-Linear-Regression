@@ -24,7 +24,9 @@ editor: visual
 
 **Hypothesized Relationship**
 
-	We hypothesize that countries with a higher average happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.\
+```         
+We hypothesize that countries with a higher average happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.\
+```
 
 ## **Data Cleaning Process**
 
@@ -32,7 +34,7 @@ editor: visual
 
 2.  Then, we removed all rows containing ‘NA’ values.
 
-3.  Next, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year
+3.  Next, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year.
 
 ```{r}
 library(tidyverse)
@@ -49,3 +51,15 @@ Objectives:
 -   Use linear regression to model the relationship between your variables.
 
 -   Evaluate your model fit by summarizing the amount of variability in the response, fitted, and residual values.
+
+Written Components:
+
+-   Present and discuss visualizations of the relationship between the variables.
+
+-   Describe the statistical method used – linear regression.
+
+-   Present the estimated regression model (in notation).
+
+-   Interpret the linear regression coefficients (in context).
+
+-   Describe the fit of the regression model (both in table and written format).
