@@ -88,10 +88,9 @@ anim <- plot +
   transition_time(time) + 
   labs(title = "Relation Between Happiness and Life Expectancy: {frame_time}")
 
-# animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
+animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
 ```
 
-![Gif](/Users/jackwalton/Code/classes/statProject/project/STAT311_Final_Project/happiness_life_expectancy.gif)
 
 #### Fitting a simple linear regression model to check for a relationship:
 
