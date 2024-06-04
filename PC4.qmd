@@ -54,7 +54,36 @@ library(tidyverse)
 life_expectancies_by_country <- read.csv("Life Expectancy-Dataset-countries-etc-by-year.csv")
 happiness_scores_by_country <- read.csv("Happiness-Dataset-countries-by-year.csv")
 
-full_dataset <- inner_join(data1, data2, by = c("time", "name"))
+full_dataset <- inner_join(life_expectancies_by_country, 
+                           happiness_scores_by_country, 
+                           by = c("time", "name"))
+
 ```
 
-# 
+# Linear Regression
+
+Explanatory Variable (x): Happiness score
+
+Response Variable (y): Life expectancy
+
+#### Fitting a simple linear regression model to check for a relationship:
+
+First, we cleaned the data to ensure one x value and one y value per country. We chose to use the average values for life expectancy and happiness scores for each country across **all** years, in order to get a more complete picture.
+
+```{r}
+clean_dataset <- full_dataset |>
+  group_by(name) |>
+  summarise(LifeExpectancy = mean(Life.expectancy), 
+            HappinessScore = mean(Happiness.score..WHR.))
+  
+
+model <- lm(LifeExpectancy ~ HappinessScore, clean_dataset)
+
+model
+```
+
+$$
+LifeExpectancy = 0.586 * HappinessScore + 39.972
+$$
+
+The equation seen above represents the linear regression line. This suggests a unit increase in happiness score corresponds to a 0.586 year increase in life expectancy.
