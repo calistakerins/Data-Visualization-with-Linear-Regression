@@ -77,18 +77,18 @@ plot <- ggplot(data= full_dataset, aes(x= Happiness.score, y=Life.expectancy)) +
   labs(x = "Happiness score", y = "", subtitle = "Life Expectancy (Years)", title = "Relation Between Happiness and Life Expectancy")
 plot(plot)
 ```
+
 Excluding the outliers, the points seem to follow a somewhat linear trend. Now let's seperate the points by years and animate a similar plot over time.
 
 ```{r}
 library(gganimate)
 library(gifski)
 
-
 anim <- plot +
   transition_time(time) + 
   labs(title = "Relation Between Happiness and Life Expectancy: {frame_time}")
 
-# animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
+animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
 ```
 
 ![Gif](/Users/jackwalton/Code/classes/statProject/project/STAT311_Final_Project/happiness_life_expectancy.gif)
@@ -110,7 +110,9 @@ model
 ```
 
 $$
-LifeExpectancy = 0.586 * HappinessScore + 39.972
-$$
+\text{Life Expectancy} = \beta_0 + \beta_1 \cdot \text{Happiness Score}
+$$From the summary output we find that the y-intercept $\beta_0$ is $39.972$ and the slope $\beta_1$ is $0.586$. Thus, the estimated regression equation is: $$
+\text{Life Expectancy} = 39.972 + 0.586 \cdot \text{Happiness Score}
+$$ {#eq-Regression}
 
 The equation seen above represents the linear regression line. This suggests a unit increase in happiness score corresponds to a 0.586 year increase in life expectancy.
