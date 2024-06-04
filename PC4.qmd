@@ -91,8 +91,7 @@ anim <- plot +
 animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
 ```
 
-
-#### Fitting a simple linear regression model to check for a relationship:
+## Fitting a simple linear regression model to check for a relationship:
 
 First, we cleaned the data to ensure one x value and one y value per country. We chose to use the average values for life expectancy and happiness scores for each country across **all** years, in order to get a more complete picture.
 
@@ -115,3 +114,23 @@ $$From the summary output we find that the y-intercept $\beta_0$ is $39.972$ and
 $$ {#eq-Regression}
 
 The equation seen above represents the linear regression line. This suggests a unit increase in happiness score corresponds to a 0.586 year increase in life expectancy.
+
+## Model Fit
+
+In order to asses the model fit, we determined the variance in the observed response values, the fitted values, and the residuals. These are presented in the table below.
+
+```{r}
+vars <- broom::augment(model) |>
+  summarize(response_var = var(LifeExpectancy),
+            fitted_var = var(.fitted),
+            resid_var = var(.resid))
+
+vars |>
+  knitr::kable(col.names = c("Response Variance", "Fitted Variance", "Residuals Variance"),
+               format = "pipe",
+               align = "ccc",
+               caption = "Table 2.3.1: Model Variances",
+               digits = 2)
+```
+
+According to these variances, the model accounts for `r round((vars$fitted_var / vars$response_var) * 100, 2)`% of the variability in the response values. This suggests that our model does a moderately good job of representing the true response.
