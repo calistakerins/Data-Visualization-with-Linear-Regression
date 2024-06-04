@@ -101,7 +101,7 @@ First, we cleaned the data to ensure one x value and one y value per country. We
 clean_dataset <- full_dataset |>
   group_by(name) |>
   summarise(LifeExpectancy = mean(Life.expectancy), 
-            HappinessScore = mean(Happiness.score..WHR.))
+            HappinessScore = mean(Happiness.score))
   
 
 model <- lm(LifeExpectancy ~ HappinessScore, clean_dataset)
