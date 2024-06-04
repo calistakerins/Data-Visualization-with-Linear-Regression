@@ -26,14 +26,14 @@ execute:
 
 -   Variable 2: Life Expectancy\*
 
-\*Measured each year\
+\*Measured each year. Country is also recorded.\
 
 ## **Detailed Data Description**
 
-[Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains average scores about life satisfaction using a scale known as the Cantril life ladder, measured across nations over multiple years. Respondents imagined a ladder with steps ranging from 0 at the bottom (representing the worst possible life) to 10 at the top (representing the best possible life) and indicated where they feel they stand. Gapminder has converted this scale from 0 to 100 for clarity, representing it in terms of percentage. The data comes from the World Happiness Report collected by the Gallup World Poll. It contains data from 2005-2020.
+[Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains average scores about life satisfaction using a scale known as the Cantril life ladder, measured across nations over multiple years. Respondents imagined a ladder with steps ranging from 0 at the bottom (representing the worst possible life) to 10 at the top (representing the best possible life) and indicated where they feel they stand. Gapminder has converted this scale from 0 to 100 for clarity, representing it in terms of percentage. The data comes from the World Happiness Report collected by the Gallup World Poll. It contains data from 2005-2020. You can also find out more [here](https://worldhappiness.report/ed/2023/#appendices-and-data) from the World Happiness Report, where this data originated from, since there is no documentation on Gapminder.
 
 \
-[Life Expectancy Dataset](https://docs.google.com/spreadsheets/d/1RehxZjXd7_rG8v2pJYV6aY0J3LAsgUPDQnbY4dRdiSs/edit#gid=501532268): This data set contains life expectancy across different nations over time, measured as the number of years a newborn infant would live if the current mortality rates at different ages were to stay the same throughout its life. The data is compiled by Gapminder and mainly comes from the Institute of Health Metrics and Evaluation and UN forecasts. It contains data from 1800 to 2100 (Predicted).
+[Life Expectancy Dataset](https://www.gapminder.org/data/documentation/gd004/): This data set contains life expectancy across different nations over time, measured as the number of years a newborn infant would live if the current mortality rates at different ages were to stay the same throughout its life. The data is compiled by Gapminder and mainly comes from the Institute of Health Metrics and Evaluation and UN forecasts. It contains data from 1800 to 2100 (Predicted).
 
 **Hypothesized Relationship**
 
@@ -78,7 +78,7 @@ plot <- ggplot(data= full_dataset, aes(x= Happiness.score, y=Life.expectancy)) +
 plot(plot)
 ```
 
-Excluding the outliers, the points seem to follow a somewhat linear trend. Now let's seperate the points by years and animate a similar plot over time.
+Excluding the outliers, the points seem to follow a somewhat linear trend. Now we'll separate the points by years and animate a gif of similar plots for each year.
 
 ```{r}
 library(gganimate)
@@ -90,6 +90,8 @@ anim <- plot +
 
 animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
 ```
+
+The plots in the gif above all seem to keep the same trend line, so the linear relationship seems to be stable over time.
 
 ## Fitting a simple linear regression model to check for a relationship:
 
