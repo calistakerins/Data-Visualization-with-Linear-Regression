@@ -32,22 +32,20 @@ execute:
 
 [Happiness Score Dataset](https://docs.google.com/spreadsheets/d/1ll4dtbYCDKWzqIfpC5ZXYdxIyjZ8lKnEyWHQI4a_yM0/edit#gid=501532268): This data set contains average scores about life satisfaction using a scale known as the Cantril life ladder, measured across nations over multiple years. Respondents imagined a ladder with steps ranging from 0 at the bottom (representing the worst possible life) to 10 at the top (representing the best possible life) and indicated where they feel they stand. Gapminder has converted this scale from 0 to 100 for clarity, representing it in terms of percentage. The data comes from the World Happiness Report collected by the Gallup World Poll. It contains data from 2005-2020. You can also find out more [here](https://worldhappiness.report/ed/2023/#appendices-and-data) from the World Happiness Report, where this data originated from, since there is no documentation on Gapminder.
 
-\
 [Life Expectancy Dataset](https://www.gapminder.org/data/documentation/gd004/): This data set contains life expectancy across different nations over time, measured as the number of years a newborn infant would live if the current mortality rates at different ages were to stay the same throughout its life. The data is compiled by Gapminder and mainly comes from the Institute of Health Metrics and Evaluation and UN forecasts. It contains data from 1800 to 2100 (Predicted).
 
 **Hypothesized Relationship**
 
 ```         
-We hypothesize that countries with a higher average happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.
+We hypothesize that a higher happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives.
 ```
 
 ## **Data Cleaning Process**
 
-1.  First, we used pivot_longer to pivot the tables, consolidating all the different year variables into one column named ‘Year’
 
-2.  Then, we removed all rows containing ‘NA’ values.
+1.  First, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year.
 
-3.  Next, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year.
+2. Next, we renamed the variable for happiness score from `Happiness.score..WHR.` to `Happiness.score`
 
 ```{r}
 library(tidyverse)
