@@ -37,16 +37,11 @@ execute:
 
 ### Hypothesized Relationship
 
-**We hypothesize that a higher happiness score will also have a high life expectancy. We assume people who are happier try to stay healthy and take better care of themselves because they enjoy their lives. We also assume that people born into poverty are less happy, and have less access to health and wellness.**
+**The hypothesis posited is that a higher happiness score correlates with a higher life expectancy. The rationale is that individuals who are happier are more likely to stay healthy and take better care of themselves due to their enjoyment of life. Additionally, it is assumed that individuals born into poverty are less happy due to reduced access to health and wellness.**
 
 ## Data Cleaning Process
 
-
-1.  First, we did an inner join on column ‘Year’ (same name in both datasets) to combine both tables, and keep only the rows where data was collected for both tables during that year.
-
-2. Next, we renamed the variable for happiness score from `Happiness.score..WHR.` to `Happiness.score`
-
-3. Note: We did not need to pivot_longer or fill NA values because our datasets were as clean as possible to begin with.
+The data cleaning process commenced with an inner join on the column ‘Year’ (same name in both datasets) to merge both tables and retain only the rows where data was collected for both datasets during that year. Subsequently, the variable for happiness score was renamed from Happiness.score..WHR. to Happiness.score. There was no need for additional data cleaning steps such as pivoting longer or filling NA values as the datasets were already well-prepared.
 
 ```{r}
 library(tidyverse)
@@ -68,7 +63,7 @@ Response Variable (y): Life expectancy
 
 ## Data Visualization
 
-Let's plot the data with the explanatory variable, happiness score, on the x-axis and the response variable, life expectancy, on the y-axis. We do this since it makes more sense that happiness would affect life expectancy rather than life expectancy affecting happiness.
+The relationship between the explanatory variable, happiness score, and the response variable, life expectancy, is visualized with the happiness score on the x-axis and life expectancy on the y-axis. This choice is based on the logical premise that happiness is more likely to affect life expectancy than vice versa.
 
 ```{r}
 plot <- ggplot(data= full_dataset, aes(x= Happiness.score, y=Life.expectancy)) +
@@ -79,7 +74,7 @@ plot(plot)
 
 In the plot above, each point represents the happiness score and life expectancy from our full dataset. The trend suggests a positive relationship, where people with higher happiness scores tend to have higher life expectancies. This is an important visual confirmation of our hypothesized relationship. Excluding the outliers, the points seem to follow a somewhat linear trend, indicating that a linear regression might be the most appropriate model for this data.
 
-Now we'll separate the points by years and animate a gif of similar plots for each year. This will help us observe any changes or trends over time.
+Next, the further analysis below involves separating the points by years and animating a gif of similar plots for each year to observe any changes or trends over time.
 
 ```{r}
 library(gganimate)
@@ -92,13 +87,13 @@ anim <- plot +
 animate(anim, renderer = gifski_renderer("happiness_life_expectancy.gif"))
 ```
 
-The animated gif created above shows the relationship between happiness score and life expectancy over time. Each frame represents a different year, allowing us to see if the relationship holds consistently. The plots in the gif seem to keep the same trend line over the years, suggesting that the linear relationship is stable over time.
+The animated gif illustrates the relationship between happiness score and life expectancy over time. Each frame represents a different year, providing a dynamic view of whether the relationship holds consistently. The plots in the gif maintain a stable trend line over the years, reinforcing the stability of the linear relationship over time.
 
 ## Perform Linear Regression
 
 ### Average Values for Each Country
 
-First, we summarized the data to ensure one happiness score (x value) and one life expectancy (y value) per country. We chose to use the average values for life expectancy and happiness scores for each country across **all** years, in order to get a more complete picture. We decided to average across all years because the linear model stayed stable over time in the previous section.
+The data was summarized to ensure one happiness score (x value) and one life expectancy (y value) per country. The average values for life expectancy and happiness scores for each country across all years were used to provide a more comprehensive picture. This approach was chosen due to the stability of the linear model over time observed in the previous section.
 
 ``` {r}
 clean_dataset <- full_dataset |>
@@ -113,12 +108,11 @@ avg_plot <- ggplot(data= clean_dataset, aes(x= HappinessScore, y=LifeExpectancy)
 plot(avg_plot)
 ```
 
-The plot above shows the average happiness score versus the average life expectancy for each country. Each point represents a country, with the x-axis displaying the average happiness score and the y-axis displaying the average life expectancy. The positive trend observed in the plot indicates that countries with higher average happiness scores also tend to have higher average life expectancies. This further supports our hypothesized relationship and provides a clearer, less cluttered visualization of the data.
-It's also important to visualize this data, because next we will use for our linear regression model.
+The plot above demonstrates the average happiness score versus the average life expectancy for each country. Each point signifies a country, with the x-axis displaying the average happiness score and the y-axis displaying the average life expectancy. The positive trend indicates that countries with higher average happiness scores also tend to have higher average life expectancies, further supporting the hypothesized relationship and providing a clearer, less cluttered visualization of the data. This visualization is crucial as it sets the stage for the subsequent linear regression model.
 
 ### Fitting a Simple Linear Regression Model:
 
-Now let's fit a simple linear regression model to check for a relationship between happiness scores (dependent/response variable) and life expectancy (independent/explanatory variable):
+A simple linear regression model was fitted to examine the relationship between happiness scores (independent/explanatory variable) and life expectancy (dependent/response variable):
 
 ```{r}
 model <- lm(LifeExpectancy ~ HappinessScore, clean_dataset)
@@ -134,12 +128,12 @@ The linear equation for our relationship is of the form:
 $$
 \text{Life Expectancy} = \beta_0 + \beta_1 \cdot \text{Happiness Score}
 $$ {#eq-Regression}
-From the summary output above, we find that the y-intercept $\beta_0$ is $39.972$ and the slope $\beta_1$ is $0.586$. Thus, the estimated regression equation is: 
+From the summary output above, the y-intercept $\beta_0$ is $39.972$ and the slope $\beta_1$ is $0.586$. Thus, the estimated regression equation is: 
 $$
 \text{Life Expectancy} = 39.972 + 0.586 \cdot \text{Happiness Score}
 $$ {#eq-Regression-Complete}
 
-The completed linear equation seen above contains a slope which suggests a unit increase in happiness score corresponds to a 0.586 year increase in life expectancy. The y-intercept of the equation suggests that someone with a happiness score of 0 would have a life expectancy of ~40 years. 
+The completed linear equation seen above contains a slope which suggests a unit increase in happiness score corresponds to a 0.586 year increase in life expectancy. The y-intercept of the equation suggests that someone with a happiness score of 0 would have a life expectancy of approximately 40 years. 
 
 ## Model Fit
 
@@ -167,16 +161,120 @@ vars |>
 
 **Residuals Variance:** This is the variance in the residuals (the differences between the observed and predicted life expectancy values). It measures the amount of variation in the response variable that is not explained by the predictor variable in the model.
 
-To determine the proportion of variance in life expectancy explained by the happiness score, we calculate the R-squared value. This is done by dividing the fitted variance by the response variance and then multiplying by 100 to express it as a percentage:
+To determine the proportion of variance in life expectancy explained by the happiness score, the R-squared value is calculated by dividing the fitted variance by the response variance and multiplying by 100 to express it as a percentage:
 
 $$
 R^2 = \frac{\text{Fitted Variance}}{\text{Response Variance}} \times 100 = \frac{38.69}{62.13} \times 100 \approx 62.27\%
 $$
 
-According to these variances, the model accounts for `r round((vars$fitted_var / vars$response_var) * 100, 2)`% of the variability in the response values. This suggests that our model does a moderately good job of representing the true response.
+According to these variances, the model accounts for `r round((vars$fitted_var / vars$response_var) * 100, 2)`% of the variability in the response values. This suggests that the linear regression model does a moderately good job of representing the true response, indicating a meaningful relationship between happiness scores and life expectancy. 
 
 # Simulation
 
+Performing predictive checks is essential to determine how well the observed data and the linear model fit. By comparing data generated from the linear model to the observed data, we can assess the plausibility that the observed data could be generated by the model.
+
+To conduct a predictive check, the following steps are necessary:
+
+  1. Fit a regression model to the observed data.
+
+  2. For a set of observed explanatory values, obtain predicted response values from the model.
+
+  3. Add random errors to the predicted responses.
+
+  4. Compare the simulated data to the observed data.
+
+  5. Iterate!
+  
+Step 1 has been completed in the previous section, Linear Regression. Next, predicted response values (life expectancy) will be obtained from the model using the observed explanatory values (happiness score).
+
 ## Visualizing Simulations from the Model
+In simple linear regression, responses are modeled as a linear function of the explanatory variable and some error, represented by the equation:
+
+$$
+
+\text{Life Expectancy} = \beta_0 + \beta_1 \cdot \text{Happiness Score} + \varepsilon
+
+$$ {#eq-Regression-with-err}
+
+For simple linear regression, the errors ($\varepsilon$) are assumed to follow a normal distribution with a mean of 0 and a standard deviation.
+
+First, predictions based on the linear regression model are generated. Then, observations are simulated by adding random errors to the predictions, based on the model's residual standard error and a mean of 0. With steps 2 and 3 of the predictive check completed, the observed values from the dataset are plotted next to the simulated response values for comparison below:
+
+```{r}
+set.seed(13)  # Purely for reproducibility
+
+predicted_values <- predict(model, clean_dataset) # predict response values 
+
+# Add random error based on residual std error of the model
+residual_standard_error <- sigma(model)
+simulated_values <- predicted_values + rnorm(length(predicted_values), mean = 0, sd = residual_standard_error)
+clean_dataset$SimulatedLifeExpectancy <- simulated_values
+
+# Combine observed and simulated data into one dataset
+combined_dataset <- clean_dataset |>
+  select(HappinessScore, LifeExpectancy) |>
+  rename(Life_Expectancy = LifeExpectancy) |>
+  mutate(Data_Type = "Observed") |>
+  bind_rows(clean_dataset |>
+              select(HappinessScore, SimulatedLifeExpectancy) |>
+              rename(Life_Expectancy = SimulatedLifeExpectancy) |>
+              mutate(Data_Type = "Simulated"))
+
+# Plot using facet_wrap
+combined_plot <- ggplot(data = combined_dataset, aes(x = HappinessScore, y = Life_Expectancy)) +
+  geom_point(alpha = 0.5, color = "steelblue") +
+  labs(x = "Avg. Happiness Score", y = "", subtitle="Avg. Life Expectancy (Years)") +
+  facet_wrap(~ Data_Type, scales = "free_y") +
+  theme_minimal() +
+  labs(title = "Comparison of Observed and Simulated Data: Happiness Score vs. Life Expectancy")
+
+plot(combined_plot)
+```
+The plots above display the observed data (left) and the simulated data (right) side-by-side. The simulated data shows a similar positive trend as the observed data, indicating that the model's predictions are reasonably aligned with the actual observations. However, some differences can be observed:
+
+**Variance:** The simulated data seems to exhibit a slightly thinner spread compared to the observed data, which has slightly denser grouping of points in certain areas of the plot. This is believed to be reflecting the random errors added to the predictions.
+**Outliers:** Outliers present in the observed data appear more prominent than in the simulated data. For example, there are observed points with life expectancy under 50 years.
 
 ## Generating Multiple Predictive Checks
+To rigorously test the model, generating at least 1,000 simulated datasets is essential. These datasets could have been observed if the regression model adequately describes the relationship between the response and explanatory variables.
+
+In step 4, a linear regression is performed between the observed dataset and each simulated dataset, and the $R^2$ value from each regression is recorded. This process is iterated 1,000 times in total. Understanding how well the model can generate data similar to the observed dataset is crucial. The distribution of these $R^2$ values is then plotted with their frequencies.
+
+```{r}
+library(purrr)
+
+set.seed(13)  # For reproducibility
+num_simulations <- 1000
+
+# Function to simulate and calculate R-squared
+simulate_r2 <- function(predicted_values, residual_standard_error, observed_values) {
+  simulated_values <- predicted_values + rnorm(length(predicted_values), mean = 0, sd = residual_standard_error)
+  sim_model <- lm(observed_values ~ simulated_values)
+  summary(sim_model)$r.squared
+}
+
+# Generate R-squared values
+simulated_r2 <- map_dbl(1:num_simulations, ~simulate_r2(predicted_values, residual_standard_error, clean_dataset$LifeExpectancy))
+
+# Create data frame for plotting
+simulated_r2_df <- data.frame(R2 = simulated_r2)
+
+# Plot distribution of R-squared values
+r2_plot <- ggplot(simulated_r2_df, aes(x = R2)) +
+  geom_histogram(binwidth = 0.01, fill = "dodgerblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of R² from Simulated Data", x = "R²", y = "Frequency")
+
+plot(r2_plot)
+```
+The histogram above illustrates the distribution of $R^2$ values obtained from 1,000 simulated datasets. The key observation here is the clustering of the majority of $R^2$ values around a central value of 0.4, indicating a consistent level of model performance across simulations.
+
+### Implications of an Average $R^2$ Value of 0.4
+#### Predictive Power
+An average $R^2$ value of 0.4 indicates that the model has a moderate level of predictive power. It explains a significant portion, but not the majority, of the variation in life expectancy. This suggests that while happiness score is an important predictor of life expectancy, other factors contribute to life expectancy that are not captured by this linear regression model.
+
+#### Model Performance and Variance
+The $R^2$ value reflects the model's ability to fit the data. With 40% of the variance explained, the model performs reasonably well, but there is room for improvement. This moderate fit indicates that the linear relationship between happiness score and life expectancy is meaningful, but the model does not capture all the complexity of the data. The remaining 60% of the variance in life expectancy is unexplained by the model.
+
+### Conclusion
+While an average $ R^2 $ value of 0.4 indicates that happiness score is a significant and meaningful predictor of life expectancy, it also highlights the complexity of the factors influencing life expectancy. For example, factors such as socioeconomic status, healthcare access, education, and environmental conditions might also play significant roles. The model's moderate predictive power encourages further research to identify additional variables and refine the model for a more comprehensive understanding of the determinants of life expectancy. Exploring non-linear models also may provide a better fit and more insights into the relationship between happiness and life expectancy.
+
