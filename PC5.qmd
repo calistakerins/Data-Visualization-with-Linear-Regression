@@ -1,5 +1,5 @@
 ---
-title: "PC4"
+title: "PC5: Final Report"
 author: "Jack Walton, Calista Kerins, Dylan Schmidt, Jhon Chavez-Matul"
 format: 
   html:
@@ -7,6 +7,7 @@ format:
     code-tools: true
     toc: true
     number-sections: true
+    code-fold: true
     theme:
       light: flatly
       dark: darkly
@@ -173,3 +174,9 @@ R^2 = \frac{\text{Fitted Variance}}{\text{Response Variance}} \times 100 = \frac
 $$
 
 According to these variances, the model accounts for `r round((vars$fitted_var / vars$response_var) * 100, 2)`% of the variability in the response values. This suggests that our model does a moderately good job of representing the true response.
+
+# Simulation
+
+## Visualizing Simulations from the Model
+
+## Generating Multiple Predictive Checks
