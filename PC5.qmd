@@ -152,7 +152,7 @@ vars |>
   knitr::kable(col.names = c("Response Variance", "Fitted Variance", "Residuals Variance"),
                format = "pipe",
                align = "ccc",
-               caption = "Table 2.3.1: Model Variances",
+               caption = "Table 2.3: Model Variances",
                digits = 2)
 ```
 
