@@ -45,6 +45,9 @@ The data cleaning process commenced with an inner join on the column ‘Year’ 
 
 ```{r}
 library(tidyverse)
+library(purrr)
+library(broom)
+
 life_expectancies_by_country <- read.csv("Life Expectancy-Dataset-countries-etc-by-year.csv")
 happiness_scores_by_country <- read.csv("Happiness-Dataset-countries-by-year.csv")
 
@@ -191,10 +194,8 @@ Step 1 has been completed in the previous section, Linear Regression. Next, pred
 In simple linear regression, responses are modeled as a linear function of the explanatory variable and some error, represented by the equation:
 
 $$
-
 \text{Life Expectancy} = \beta_0 + \beta_1 \cdot \text{Happiness Score} + \varepsilon
-
-$$ {#eq-Regression-with-err}
+$$
 
 For simple linear regression, the errors ($\varepsilon$) are assumed to follow a normal distribution with a mean of 0 and a standard deviation.
 
@@ -233,16 +234,15 @@ plot(combined_plot)
 The plots above display the observed data (left) and the simulated data (right) side-by-side. The simulated data shows a similar positive trend as the observed data, indicating that the model's predictions are reasonably aligned with the actual observations. However, some differences can be observed:
 
 **Variance:** The simulated data seems to exhibit a slightly thinner spread compared to the observed data, which has slightly denser grouping of points in certain areas of the plot. This is believed to be reflecting the random errors added to the predictions.
+
 **Outliers:** Outliers present in the observed data appear more prominent than in the simulated data. For example, there are observed points with life expectancy under 50 years.
 
 ## Generating Multiple Predictive Checks
-To rigorously test the model, generating at least 1,000 simulated datasets is essential. These datasets could have been observed if the regression model adequately describes the relationship between the response and explanatory variables.
+To rigorously test the model, generating at least 1,000 simulated datasets is essential. These datasets will help determine if the regression model we chose (linear regression) adequately describes the relationship between the response and explanatory variables.
 
-In step 4, a linear regression is performed between the observed dataset and each simulated dataset, and the $R^2$ value from each regression is recorded. This process is iterated 1,000 times in total. Understanding how well the model can generate data similar to the observed dataset is crucial. The distribution of these $R^2$ values is then plotted with their frequencies.
+In step 4, a linear regression is performed between the observed reponse dataset and each simulated response dataset, and then the $R^2$ value from each regression is recorded. To complete step 5, this process is iterated 1,000 times in total. Understanding how well the model can generate data similar to the observed dataset is crucial. The distribution of these $R^2$ values is then plotted with their frequencies.
 
 ```{r}
-library(purrr)
-
 set.seed(13)  # For reproducibility
 num_simulations <- 1000
 
@@ -270,11 +270,11 @@ The histogram above illustrates the distribution of $R^2$ values obtained from 1
 
 ### Implications of an Average $R^2$ Value of 0.4
 #### Predictive Power
-An average $R^2$ value of 0.4 indicates that the model has a moderate level of predictive power. It explains a significant portion, but not the majority, of the variation in life expectancy. This suggests that while happiness score is an important predictor of life expectancy, other factors contribute to life expectancy that are not captured by this linear regression model.
+An average $R^2$ value of 0.4 indicates that the model has a moderate level of predictive power. It explains a significant portion (40%), but not the majority, of the variation in life expectancy. This suggests that while happiness score is an important predictor of life expectancy, other factors contribute to life expectancy that are not captured by this linear regression model.
 
 #### Model Performance and Variance
 The $R^2$ value reflects the model's ability to fit the data. With 40% of the variance explained, the model performs reasonably well, but there is room for improvement. This moderate fit indicates that the linear relationship between happiness score and life expectancy is meaningful, but the model does not capture all the complexity of the data. The remaining 60% of the variance in life expectancy is unexplained by the model.
 
 ### Conclusion
-While an average $ R^2 $ value of 0.4 indicates that happiness score is a significant and meaningful predictor of life expectancy, it also highlights the complexity of the factors influencing life expectancy. For example, factors such as socioeconomic status, healthcare access, education, and environmental conditions might also play significant roles. The model's moderate predictive power encourages further research to identify additional variables and refine the model for a more comprehensive understanding of the determinants of life expectancy. Exploring non-linear models also may provide a better fit and more insights into the relationship between happiness and life expectancy.
+While an average $R^2$ value of 0.4 indicates that happiness score is a significant and meaningful predictor of life expectancy, it also highlights the complexity of the factors influencing life expectancy. For example, factors such as socioeconomic status, healthcare access, education, and environmental conditions might also play significant roles. The model's moderate predictive power encourages further research to identify additional variables and refine the model for a more comprehensive understanding of the determinants of life expectancy. Exploring non-linear models also may provide a better fit and more insights into the relationship between happiness and life expectancy.
 
